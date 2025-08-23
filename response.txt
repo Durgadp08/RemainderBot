@@ -1,0 +1,67 @@
+Response 1:-
+```json
+{
+  "success": true,
+  "message": "Tasks extracted successfully.",
+  "tasks": [
+    {
+      "task": "Talk to mom",
+      "due": "2025-07-23T07:00:00+05:30",
+      "status": "pending",
+      "recurrence": "one-time",
+      "messages": [
+        "Hey, remember to talk to mom tomorrow morning!",
+        "Just a friendly reminder to call mom at 7 am.",
+        "Don't forget your chat with mom tomorrow.",
+        "Time for a quick call with mom!"
+      ]
+    },
+    {
+      "task": "Start practicing dsa problems",
+      "due": "2025-07-23T09:00:00+05:30",
+      "status": "pending",
+      "recurrence": "daily",
+      "messages": [
+        "Time to start those DSA problems!",
+        "Don't forget to practice DSA today.",
+        "Daily reminder: DSA practice time.",
+        "Sharpen those coding skills with some DSA!"
+      ]
+    }
+  ]
+}
+```
+
+Response 2:-
+```json
+{
+  "success": true,
+  "message": "Tasks extracted successfully.",
+  "tasks": [
+    {
+      "task": "Talk to manager tomorrow morning",
+      "due": "2025-07-19T09:00:00+05:30",
+      "status": "pending",
+      "recurrence": "one-time",
+      "messages": [
+        "Repu morning manager tho matladali ani gurtunda?",
+        "Manager ki call cheyadam pending undi, repu morning.",
+        "Manager tho matladali, time set chesukondi.",
+        "Manager call repu morning lo cheyali!"
+      ]
+    },
+    {
+      "task": "Buy shampoo after coming from office tomorrow",
+      "due": "2025-07-19T18:00:00+05:30",
+      "status": "pending",
+      "recurrence": "one-time",
+      "messages": [
+        "Office nunchi vachaka shampoo konukovali ani gurtunda?",
+        "Shampoo konukovalani marichipovachu!",
+        "Repu office nunchi vachaka shampoo teesukondi.",
+        "Shampoo pending, office nunchi vachaka!"
+      ]
+    }
+  ]
+}
+```
