@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node dist/index.js",
+    "cron" : "npx ts-node cron/index.ts",
     "test": "npx ts-node src/dbQueries.ts"
   },
   "dependencies": {
