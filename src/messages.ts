@@ -76,9 +76,3 @@ export const getMessageToSend = async (
   }
   return english.successmessage;
 };
-
-// const message =
-//   "tommorow morning i need to wash clothes, take chapati as breakfast and before going to office take water bottle";
-// getMessageToSend(true, message, "9550856095")
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err));

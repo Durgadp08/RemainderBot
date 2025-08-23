@@ -35,7 +35,6 @@ const BotWA = async () => {
       creds: state.creds,
       keys: makeCacheableSignalKeyStore(state.keys, whatsAppLogger),
     },
-    printQRInTerminal: !usePairingCode,
   });
 
   if (usePairingCode && !sock.authState.creds.registered) {

@@ -1,30 +1,12 @@
-const getCurrentIsoDateTime = () => {
-  const now = new Date();
-  const offset = now.getTimezoneOffset();
-  const sign = offset < 0 ? "+" : "-";
-  const absOffset = Math.abs(offset);
-  const hours = Math.floor(absOffset / 60)
-    .toString()
-    .padStart(2, "0");
-  const minutes = (absOffset % 60).toString().padStart(2, "0");
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 
-  return (
-    `${now.getFullYear()}-${(now.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${now.getDate().toString().padStart(2, "0")}` +
-    `${now.getHours().toString().padStart(2, "0")}:${now
-      .getMinutes()
-      .toString()
-      .padStart(2, "0")}:${now.getSeconds().toString().padStart(2, "0")}`
-  );
-};
+dayjs.extend(utc);
 
-const currentDateTime = getCurrentIsoDateTime();
-
-export const promptAI = `
+const promptAI = `
 You are a smart assistant that extracts structured tasks from natural language.
 
-**Current Date and Time for reference: ${currentDateTime}**
+**Current Date and Time for reference: ${dayjs().utc().format("YYYY-MM-DD HH:mm")}**
 
 Each input may contain one or more tasks. Your job is to convert these into structured JSON format.
 
@@ -63,7 +45,7 @@ Output :-
   "tasks": [
     {
       "task": "Call the plumber",
-      "due": "2025-07-18T14:00:00",
+      "due": "2025-07-18 14:00",
       "status": "pending",
       "recurrence": "one-time",
       "messages": [
@@ -75,7 +57,7 @@ Output :-
     },
     {
       "task": "Submit the monthly report",
-      "due": "2025-07-18T10:00:00",
+      "due": "2025-07-18 10:00",
       "status": "pending",
       "recurrence": "monthly",
       "messages": [
@@ -97,7 +79,7 @@ Output :-
   "tasks": [
     {
       "task": "Buy groceries",
-      "due": "2025-07-18T16:00:00",
+      "due": "2025-07-18 16:00",
       "status": "pending",
       "recurrence": "one-time",
       "messages": [
@@ -109,7 +91,7 @@ Output :-
     },
     {
       "task": "Water the plants",
-      "due": "2025-07-18T10:00:00",
+      "due": "2025-07-18 10:00",
       "status": "pending",
       "recurrence": "daily",
       "messages": [
@@ -121,7 +103,7 @@ Output :-
     },
     {
       "task": "Schedule doctor appointment",
-      "due": "2025-07-21T10:00:00",
+      "due": "2025-07-21 10:00",
       "status": "pending",
       "recurrence": "one-time",
       "messages": [
@@ -143,7 +125,7 @@ Output :-
   "tasks": [
     {
       "task": "Talk to mom tonight",
-      "due": "2025-07-18T18:00:00",
+      "due": "2025-07-18 18:00",
       "status": "pending",
       "recurrence": "one-time",
       "messages": [

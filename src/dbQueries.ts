@@ -89,7 +89,9 @@ export const insertManyTasksWithMessagesByOwnerID = (
 export const getMessagesByTaskId = (id: number) => {
   try {
     const messageResult = db
-      .prepare("select message from messages where task_id = ? ")
+      .prepare<{}, { message: string }>(
+        "select message from messages where task_id = ? "
+      )
       .all(id);
 
     return messageResult;
@@ -98,5 +100,29 @@ export const getMessagesByTaskId = (id: number) => {
   }
 };
 
-export const getTasksById = (id: number) => {};
+export const getTasksAtDueTime = () => {
+  try {
+    const stmt = db.prepare<{}, { id: number; ownerid: string }>(`
+      SELECT *
+      FROM tasks
+      WHERE due >= strftime('%Y-%m-%d %H:%M', 'now')
+      AND due < strftime('%Y-%m-%d %H:%M', 'now', '+1 minute')
+      `);
 
+    const rows = stmt.all([]);
+    return rows;
+  } catch (error) {
+    logger.error("Database Query to get present tasks ", error);
+    return [];
+  }
+};
+
+export const getAllTasks = () => {
+  try {
+    const stmt = db.prepare("select * from tasks");
+    const rows = stmt.all();
+    return rows;
+  } catch (error) {
+    logger.error("Database Query to get all tasks failed ", error);
+  }
+};

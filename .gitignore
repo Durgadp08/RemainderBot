@@ -1,5 +1,7 @@
+/auth_info
 /node_modules
 /logs
 .env
 qr.png
 wa-logs.txt
+/src/Database/task.db
